@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Dashboard</title>
+</head>
+<body>
+    <h1>Weather Dashboard</h1>
+    <form method="POST">
+        <label for="city">Enter City:</label>
+        <input type="text" id="city" name="city" required>
+        <button type="submit">Get Weather</button>
+    </form>
+
+    {% if weather_data %}
+        {% if weather_data.error %}
+            <p>{{ weather_data.error }}</p>
+        {% else %}
+            <h2>Weather Forecast</h2>
+            <div>
+                <h3>Temperature</h3>
+                <img src="{{ graph_filenames['temperature'] }}" alt="Temperature Graph">
+            </div>
+            <div>
+                <h3>Humidity</h3>
+                <img src="{{ graph_filenames['humidity'] }}" alt="Humidity Graph">
+            </div>
+            <div>
+                <h3>Wind Speed</h3>
+                <img src="{{ graph_filenames['wind_speed'] }}" alt="Wind Speed Graph">
+            </div>
+            <div>
+                <h3>Precipitation</h3>
+                <img src="{{ graph_filenames['precipitation'] }}" alt="Precipitation Graph">
+            </div>
+        {% endif %}
+    {% endif %}
+</body>
+</html>
